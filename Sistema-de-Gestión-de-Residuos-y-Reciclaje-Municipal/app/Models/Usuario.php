@@ -17,22 +17,15 @@ class Usuario extends Authenticatable
         'id_rol'
     ];
 
-    protected $hidden = [
-        'password'
-    ];
+    protected $hidden = ['password'];
 
     public function rol()
     {
-        return $this->belongsTo(Rol::class, 'id_rol');
+        return $this->belongsTo(Rol::class,'id_rol');
     }
 
     public function getAuthPassword()
     {
         return $this->password;
-    }
-
-    public function getAuthIdentifierName()
-    {
-        return 'correo';
     }
 }

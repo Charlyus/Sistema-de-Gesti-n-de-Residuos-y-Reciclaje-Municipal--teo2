@@ -17,29 +17,41 @@ class AuthController extends Controller
 
     public function showLogin()
     {
-        return view('login');
+        return view('auth.login');
     }
 
     public function login(Request $request)
     {
-
-        $request->validate([
-            'correo' => 'required|email',
-            'password' => 'required'
-        ]);
 
         $usuario = $this->authService->login(
             $request->correo,
             $request->password
         );
 
-        if (!$usuario) {
+        if(!$usuario){
             return back()->with('error','Credenciales incorrectas');
         }
 
-        Session::put('usuario', $usuario);
+        Session::put('usuario',$usuario);
 
-        return redirect('/dashboard');
+        // redireccion por rol
+
+        switch($usuario->rol->nombre){
+
+            case 'Administrador':
+                return redirect('/admin/dashboard');
+
+            case 'Coordinador':
+                return redirect('/coordinador/dashboard');
+
+            case 'Operador':
+                return redirect('/operador/dashboard');
+
+            default:
+                return redirect('/');
+
+        }
+
     }
 
     public function logout()
