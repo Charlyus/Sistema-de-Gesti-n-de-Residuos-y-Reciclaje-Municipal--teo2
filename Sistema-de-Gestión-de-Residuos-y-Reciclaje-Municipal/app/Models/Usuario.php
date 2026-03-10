@@ -28,4 +28,8 @@ class Usuario extends Authenticatable
     {
         return $this->password;
     }
+    public function camiones()
+{
+    return $this->hasMany(Camion::class,'conductor_asignado');
+}
 }

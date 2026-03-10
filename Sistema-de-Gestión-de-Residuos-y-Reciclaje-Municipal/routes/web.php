@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CoordinadorController;
 use App\Http\Controllers\OperadorController;
 use App\Http\Controllers\RutaController;
+use App\Http\Controllers\CamionController;
 
 
 Route::get('/', function () {
@@ -34,8 +35,9 @@ Route::middleware(['role:Coordinador'])->group(function(){
     Route::get('/programar',[CoordinadorController::class,'programar']);
     Route::post('/programar',[CoordinadorController::class,'guardarProgramacion']);
     Route::get('/rutas/create',[RutaController::class,'crearRuta']);
-    
     Route::post('/rutas/guardar',[RutaController::class,'guardarRuta']);
+    Route::get('/camiones/create',[CamionController::class,'crearCamion']);
+    Route::post('/camiones/guardar',[CamionController::class,'guardarCamion']);
 
 });
 
