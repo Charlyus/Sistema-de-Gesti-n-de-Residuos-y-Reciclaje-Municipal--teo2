@@ -2,10 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\CoordinadorService;
+use Illuminate\Http\Request;
+
 class CoordinadorController extends Controller
 {
+
+    protected $service;
+
+    public function __construct(CoordinadorService $service)
+    {
+        $this->service = $service;
+    }
+
     public function dashboard()
     {
-        return view('dashboards.coordinador');
+        $recolecciones = $this->service->recoleccionesHoy();
+
+        return view('coordinador.dashboard',compact('recolecciones'));
     }
+
+    public function programar()
+    {
+        $camiones = $this->service->camionesDisponibles();
+        $rutas = $this->service->listarRutas();
+
+        return view('coordinador.programar',compact('camiones','rutas'));
+    }
+
+    public function guardarProgramacion(Request $request)
+    {
+
+        $this->service->programarRecoleccion($request->all());
+
+        return redirect('/coordinador/dashboard');
+    }
+
 }
