@@ -1,25 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 
+<meta charset="UTF-8">
+<title>Programar Recolección</title>
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+body{
+background:#f4f6f9;
+}
+
+.card{
+border:none;
+border-radius:12px;
+}
+
+.card-header{
+font-weight:bold;
+font-size:18px;
+}
+
+</style>
 
 </head>
 
 <body>
 
-<div class="container mt-4">
+<div class="container mt-5">
 
-<h3>Programar Recolección</h3>
+<div class="row justify-content-center">
 
-<form method="POST" action="/coordinador/programar">
+<div class="col-md-7">
+
+<div class="card shadow-lg">
+
+<div class="card-header bg-primary text-white">
+
+🚛 Asignar Camión a Ruta
+
+</div>
+
+<div class="card-body">
+@if(session('error'))
+
+<div class="alert alert-danger">
+{{ session('error') }}
+</div>
+
+@endif
+
+<form method="POST" action="/recolecciones/guardar">
 
 @csrf
 
 <div class="mb-3">
-<label class="form-label">Ruta</label>
 
-<select name="id_ruta" class="form-control">
+<label class="form-label fw-bold">
+Ruta
+</label>
+
+<select name="id_ruta" class="form-select">
 
 @foreach($rutas as $ruta)
 
@@ -30,13 +73,16 @@
 @endforeach
 
 </select>
+
 </div>
 
-
 <div class="mb-3">
-<label class="form-label">Camión</label>
 
-<select name="id_camion" class="form-control">
+<label class="form-label fw-bold">
+Camión
+</label>
+
+<select name="id_camion" class="form-select">
 
 @foreach($camiones as $camion)
 
@@ -47,31 +93,40 @@
 @endforeach
 
 </select>
+
 </div>
 
+<div class="mb-4">
 
-<div class="mb-3">
-
-<label class="form-label">Fecha Programada</label>
+<label class="form-label fw-bold">
+Fecha de Recolección
+</label>
 
 <input type="date" name="fecha_programada" class="form-control">
 
 </div>
 
-
-<button class="btn btn-success">
-
-Programar Recolección
-
-</button>
+<div class="d-flex justify-content-between">
 
 <a href="/coordinador/dashboard" class="btn btn-secondary">
-
-Cancelar
-
+⬅ Volver
 </a>
 
+<button class="btn btn-success">
+✔ Programar Recolección
+</button>
+
+</div>
+
 </form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </div>
 

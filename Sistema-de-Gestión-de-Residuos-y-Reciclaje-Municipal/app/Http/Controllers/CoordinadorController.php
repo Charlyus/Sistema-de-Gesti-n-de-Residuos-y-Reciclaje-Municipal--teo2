@@ -31,11 +31,21 @@ class CoordinadorController extends Controller
     }
 
     public function guardarProgramacion(Request $request)
-    {
+{
+
+    try{
 
         $this->service->programarRecoleccion($request->all());
 
-        return redirect('/coordinador/dashboard');
+        return back()->with('success','Recolección programada');
+
     }
+    catch(\Exception $e){
+
+        return back()->with('error',$e->getMessage());
+
+    }
+
+}
 
 }

@@ -19,6 +19,7 @@ border-left:5px solid #0d6efd;
 <nav class="navbar navbar-dark bg-dark">
 <div class="container-fluid">
 <span class="navbar-brand">Panel Coordinador de Rutas</span>
+<a href="/logout" class="btn btn-primary">Cerrar sesión</a>
 </div>
 </nav>
 

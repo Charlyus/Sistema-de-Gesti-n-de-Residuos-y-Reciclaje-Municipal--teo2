@@ -32,12 +32,13 @@ Route::middleware(['role:Administrador'])->group(function(){
 Route::middleware(['role:Coordinador'])->group(function(){
 
     Route::get('/coordinador/dashboard',[CoordinadorController::class,'dashboard']);
-    Route::get('/programar',[CoordinadorController::class,'programar']);
-    Route::post('/programar',[CoordinadorController::class,'guardarProgramacion']);
+    Route::get('/recolecciones/create',[CoordinadorController::class,'programar']);
+    Route::post('/recolecciones/guardar',[CoordinadorController::class,'guardarProgramacion']);
     Route::get('/rutas/create',[RutaController::class,'crearRuta']);
     Route::post('/rutas/guardar',[RutaController::class,'guardarRuta']);
     Route::get('/camiones/create',[CamionController::class,'crearCamion']);
     Route::post('/camiones/guardar',[CamionController::class,'guardarCamion']);
+    
 
 });
 
