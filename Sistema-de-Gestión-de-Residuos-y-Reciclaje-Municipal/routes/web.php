@@ -7,6 +7,8 @@ use App\Http\Controllers\CoordinadorController;
 use App\Http\Controllers\OperadorController;
 use App\Http\Controllers\RutaController;
 use App\Http\Controllers\CamionController;
+use App\Http\Controllers\RecoleccionController;
+
 
 
 Route::get('/', function () {
@@ -38,6 +40,7 @@ Route::middleware(['role:Coordinador'])->group(function(){
     Route::post('/rutas/guardar',[RutaController::class,'guardarRuta']);
     Route::get('/camiones/create',[CamionController::class,'crearCamion']);
     Route::post('/camiones/guardar',[CamionController::class,'guardarCamion']);
+    Route::get('/recoleccion/mapa/{id}',[RecoleccionController::class,'verMapa']);
     
 
 });

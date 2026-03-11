@@ -42,21 +42,35 @@ class CoordinadorService
     $total = 0;
 
     for($i=0;$i<$cantidad;$i++)
-    {
+{
 
-        $p = $puntosRuta[array_rand($puntosRuta)];
+    // elegir segmento de la ruta
+    $index = rand(0, count($puntosRuta)-2);
 
-        $volumen = rand(50,500);
+    $p1 = $puntosRuta[$index];
+    $p2 = $puntosRuta[$index+1];
 
-        $puntosGenerados[] = [
-            'lat'=>$p['lat'],
-            'lng'=>$p['lng'],
-            'volumen'=>$volumen
-        ];
+    // interpolación entre los dos puntos
+    $t = rand(0,100) / 100;
 
-        $total += $volumen;
+    $lat = $p1['lat'] + ($p2['lat'] - $p1['lat']) * $t;
+    $lng = $p1['lng'] + ($p2['lng'] - $p1['lng']) * $t;
 
-    }
+    // pequeña variación
+    $lat += rand(-20,20) / 100000;
+    $lng += rand(-20,20) / 100000;
+
+    $volumen = rand(50,500);
+
+    $puntosGenerados[] = [
+        'lat'=>$lat,
+        'lng'=>$lng,
+        'volumen'=>$volumen
+    ];
+
+    $total += $volumen;
+
+}
 
     // convertir toneladas a kg
     $capacidadKg = $camion->capacidad_toneladas * 1000;

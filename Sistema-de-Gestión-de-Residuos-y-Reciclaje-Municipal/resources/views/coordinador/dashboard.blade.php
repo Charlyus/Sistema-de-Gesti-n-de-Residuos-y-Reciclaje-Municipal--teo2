@@ -111,6 +111,7 @@ Recolecciones del Día
 <th>Camión</th>
 <th>Estado</th>
 <th>Fecha</th>
+<th>Mapa</th>
 </tr>
 </thead>
 
@@ -136,7 +137,11 @@ Recolecciones del Día
 </td>
 
 <td>{{ $r->fecha_programada }}</td>
-
+<td>
+<a href="/recoleccion/mapa/{{ $r->id_recoleccion }}" class="btn btn-sm btn-info">
+Ver mapa
+</a>
+</td>
 </tr>
 
 @endforeach
