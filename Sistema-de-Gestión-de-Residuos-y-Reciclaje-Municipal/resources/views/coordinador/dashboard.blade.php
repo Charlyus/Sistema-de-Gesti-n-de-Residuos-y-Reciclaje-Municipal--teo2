@@ -98,20 +98,20 @@ Asignar Camión a Ruta
 <div class="card shadow">
 
 <div class="card-header bg-primary text-white">
-Recolecciones del Día
+Recolecciones disponibles
 </div>
 
 <div class="card-body">
 
-<table class="table table-hover">
+<table class="table table-bordered">
 
 <thead>
 <tr>
 <th>Ruta</th>
 <th>Camión</th>
-<th>Estado</th>
 <th>Fecha</th>
-<th>Mapa</th>
+<th>Estado</th>
+<th>Acciones</th>
 </tr>
 </thead>
 
@@ -125,23 +125,37 @@ Recolecciones del Día
 
 <td>{{ $r->camion->placa }}</td>
 
-<td>
-<span class="badge
-@if($r->estado=='Programada') bg-secondary
-@elseif($r->estado=='En proceso') bg-warning
-@elseif($r->estado=='Completada') bg-success
-@else bg-danger
-@endif">
-{{ $r->estado }}
-</span>
-</td>
-
 <td>{{ $r->fecha_programada }}</td>
+
+<td>{{ $r->estado }}</td>
+
 <td>
-<a href="/recoleccion/mapa/{{ $r->id_recoleccion }}" class="btn btn-sm btn-info">
+
+@if($r->estado == 'Programada')
+
+<a href="/recoleccion/iniciar/{{$r->id_recoleccion}}" 
+class="btn btn-success btn-sm">
+Procesar Ruta
+</a>
+
+@endif
+
+@if($r->estado == 'En proceso')
+
+<a href="/recoleccion/finalizar/{{$r->id_recoleccion}}" 
+class="btn btn-danger btn-sm">
+Terminar
+</a>
+
+@endif
+
+<a href="/recoleccion/mapa/{{$r->id_recoleccion}}" 
+class="btn btn-primary btn-sm">
 Ver mapa
 </a>
+
 </td>
+
 </tr>
 
 @endforeach
