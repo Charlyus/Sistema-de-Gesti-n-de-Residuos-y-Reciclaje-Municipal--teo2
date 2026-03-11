@@ -42,6 +42,9 @@ Nuevo Camión
 <a href="/recolecciones/create" class="btn btn-warning">
 Asignar Camión a Ruta
 </a>
+<a href="/zona/create" class="btn btn-primary">
+Nueva zona
+</a>
 
 </div>
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\OperadorController;
 use App\Http\Controllers\RutaController;
 use App\Http\Controllers\CamionController;
 use App\Http\Controllers\RecoleccionController;
+use App\Http\Controllers\ZonaController;
 
 
 
@@ -48,6 +49,9 @@ Route::get('/recoleccion/iniciar/{id}', [RecoleccionController::class,'iniciar']
 Route::get('/recoleccion/finalizar/{id}', [RecoleccionController::class,'finalizarVista']);
 
 Route::post('/recoleccion/finalizar', [RecoleccionController::class,'finalizar']);
+Route::get('/zona/create', [ZonaController::class,'create']);
+
+Route::post('/zona/store', [ZonaController::class,'store']);
     
 
 });
