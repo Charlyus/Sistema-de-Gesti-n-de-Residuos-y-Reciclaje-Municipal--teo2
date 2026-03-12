@@ -9,6 +9,7 @@ use App\Http\Controllers\RutaController;
 use App\Http\Controllers\CamionController;
 use App\Http\Controllers\RecoleccionController;
 use App\Http\Controllers\ZonaController;
+use App\Http\Controllers\PuntoVerdeController;
 
 
 
@@ -58,6 +59,12 @@ Route::post('/zona/store', [ZonaController::class,'store']);
 
 Route::middleware(['role:Operador'])->group(function(){
 
-    Route::get('/operador/dashboard',[OperadorController::class,'dashboard']);
+    Route::get('/punto-verde/dashboard', function(){
+        return view('punto_verde.dashboard');
+        });
+        
+        Route::get('/punto-verde/create',[PuntoVerdeController::class,'create']);
+        
+        Route::post('/punto-verde/store',[PuntoVerdeController::class,'store']);
 
 });

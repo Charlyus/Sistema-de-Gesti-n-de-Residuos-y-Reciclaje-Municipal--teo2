@@ -45,7 +45,7 @@ class AuthController extends Controller
                 return redirect('/coordinador/dashboard');
 
             case 'Operador':
-                return redirect('/operador/dashboard');
+                return redirect('/punto-verde/dashboard');
 
             default:
                 return redirect('/');
