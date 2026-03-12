@@ -12,6 +12,7 @@ use App\Http\Controllers\ZonaController;
 use App\Http\Controllers\PuntoVerdeController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\ContenedorController;
+use App\Http\Controllers\EntregaController;
 
 
 
@@ -76,5 +77,9 @@ Route::get('/material/list',[MaterialController::class,'list']);
 Route::get('/contenedor/create',[ContenedorController::class,'create']);
 Route::post('/contenedor/store',[ContenedorController::class,'store']);
 Route::get('/contenedor/list',[ContenedorController::class,'list']);
+Route::get('/entrega/create',[EntregaController::class,'create']);
+Route::post('/entrega/store',[EntregaController::class,'store']);
+Route::get('/entrega/list',[EntregaController::class,'list']);
+Route::get('/contenedores-disponibles',[EntregaController::class,'contenedoresDisponibles']);
 
 });
