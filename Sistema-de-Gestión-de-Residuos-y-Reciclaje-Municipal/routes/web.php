@@ -10,6 +10,7 @@ use App\Http\Controllers\CamionController;
 use App\Http\Controllers\RecoleccionController;
 use App\Http\Controllers\ZonaController;
 use App\Http\Controllers\PuntoVerdeController;
+use App\Http\Controllers\MaterialController;
 
 
 
@@ -66,5 +67,10 @@ Route::middleware(['role:Operador'])->group(function(){
         Route::get('/punto-verde/create',[PuntoVerdeController::class,'create']);
         
         Route::post('/punto-verde/store',[PuntoVerdeController::class,'store']);
+        Route::get('/punto-verde/list',[PuntoVerdeController::class,'list']);
+
+Route::get('/material/create',[MaterialController::class,'create']);
+Route::post('/material/store',[MaterialController::class,'store']);
+Route::get('/material/list',[MaterialController::class,'list']);
 
 });

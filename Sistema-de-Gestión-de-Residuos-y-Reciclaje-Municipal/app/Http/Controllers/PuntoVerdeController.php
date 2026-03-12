@@ -36,5 +36,13 @@ PuntoVerde::create([
 return redirect('/punto-verde/dashboard');
 
 }
+public function list()
+{
+
+$puntos = PuntoVerde::all();
+
+return view('punto_verde.list',compact('puntos'));
+
+}
 
 }
