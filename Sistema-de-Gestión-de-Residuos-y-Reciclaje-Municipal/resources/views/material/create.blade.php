@@ -16,6 +16,9 @@
 <div class="container mt-4">
 
 <h3>Registrar Tipo de Material</h3>
+<div class="d-flex justify-content-end">
+    <a href="/material/list" class="btn btn-success">ver Materiales</a>
+</div>
 
 <form method="POST" action="/material/store">
 
@@ -28,6 +31,7 @@
 <input type="text" name="nombre" class="form-control" required>
 
 </div>
+
 
 <button class="btn btn-success">
 Guardar

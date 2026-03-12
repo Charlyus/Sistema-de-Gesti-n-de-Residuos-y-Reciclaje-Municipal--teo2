@@ -11,6 +11,7 @@ use App\Http\Controllers\RecoleccionController;
 use App\Http\Controllers\ZonaController;
 use App\Http\Controllers\PuntoVerdeController;
 use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\ContenedorController;
 
 
 
@@ -72,5 +73,8 @@ Route::middleware(['role:Operador'])->group(function(){
 Route::get('/material/create',[MaterialController::class,'create']);
 Route::post('/material/store',[MaterialController::class,'store']);
 Route::get('/material/list',[MaterialController::class,'list']);
+Route::get('/contenedor/create',[ContenedorController::class,'create']);
+Route::post('/contenedor/store',[ContenedorController::class,'store']);
+Route::get('/contenedor/list',[ContenedorController::class,'list']);
 
 });

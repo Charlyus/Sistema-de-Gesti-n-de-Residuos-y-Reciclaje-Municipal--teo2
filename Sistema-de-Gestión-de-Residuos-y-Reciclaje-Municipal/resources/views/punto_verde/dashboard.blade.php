@@ -53,8 +53,8 @@ Registrar Entrega de Reciclaje
 
 <div class="col-md-4">
 
-<a href="/contenedor/niveles" class="btn btn-info w-100 p-3">
-Ver Nivel de Contenedores
+<a href="/contenedor/create" class="btn btn-info w-100 p-3">
+Registrar Contenedor
 </a>
 
 </div>
