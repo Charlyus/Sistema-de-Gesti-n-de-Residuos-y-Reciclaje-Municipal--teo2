@@ -48,7 +48,7 @@ Route::middleware(['role:Coordinador'])->group(function(){
     Route::get('/camiones/create',[CamionController::class,'crearCamion']);
     Route::post('/camiones/guardar',[CamionController::class,'guardarCamion']);
     Route::get('/recoleccion/mapa/{id}',[RecoleccionController::class,'verMapa']);
-    Route::get('/recoleccion/mapa/{id}', [RecoleccionController::class,'verMapa']);
+   
 
 Route::get('/recoleccion/iniciar/{id}', [RecoleccionController::class,'iniciar']);
 

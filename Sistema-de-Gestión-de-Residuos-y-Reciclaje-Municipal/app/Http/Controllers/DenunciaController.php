@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Denuncia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class DenunciaController extends Controller
 {
@@ -30,7 +31,7 @@ $foto = $request->file('foto')->store('denuncias','public');
 
 Denuncia::create([
 
-'id_usuario'=>Auth::id(),
+'id_usuario' => Session::get('usuario')->id_usuario,
 'descripcion'=>$request->descripcion,
 'latitud'=>$request->latitud,
 'longitud'=>$request->longitud,
@@ -46,7 +47,7 @@ return redirect('/denuncia/mis-denuncias');
 public function misDenuncias()
 {
 
-$denuncias = Denuncia::where('id_usuario',Auth::id())
+$denuncias = Denuncia::where('id_usuario',Session::get('usuario')->id_usuario)
 ->join('estados_denuncia','denuncias.id_estado','=','estados_denuncia.id_estado_denuncia')
 ->select('denuncias.*','estados_denuncia.nombre as estado')
 ->orderBy('fecha_creacion','desc')

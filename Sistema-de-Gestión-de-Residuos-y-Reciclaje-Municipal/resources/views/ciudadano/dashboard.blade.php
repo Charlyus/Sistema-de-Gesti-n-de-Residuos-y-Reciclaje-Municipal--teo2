@@ -15,7 +15,9 @@
 <div class="container mt-4">
 
 <h3>Panel del Ciudadano</h3>
-
+<div class="d-flex justify-content-end">
+    <a href="/logout" class="btn btn-success">cerrar sesion</a>
+</div>
 <div class="row mt-4">
 
 <div class="col-md-6">
