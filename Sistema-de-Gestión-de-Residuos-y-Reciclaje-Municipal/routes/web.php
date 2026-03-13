@@ -15,6 +15,7 @@ use App\Http\Controllers\ContenedorController;
 use App\Http\Controllers\EntregaController;
 use App\Http\Controllers\CiudadanoController;
 use App\Http\Controllers\DenunciaController;
+use App\Http\Controllers\AdminDenunciaController;
 
 
 
@@ -32,11 +33,10 @@ Route::get('/dashboard', function(){
 });
 
 
-Route::middleware(['role:Administrador'])->group(function(){
-
-    Route::get('/admin/dashboard',[AdminController::class,'dashboard']);
-
-});
+Route::middleware(['role:Administrador'])->group(function(){ 
+    Route::get('/admin/dashboard',[AdminDenunciaController::class,'dashboard']); 
+    Route::get('/admin/denuncias',[AdminDenunciaController::class,'index']); 
+    Route::post('/admin/denuncia/cambiar-estado',[AdminDenunciaController::class,'cambiarEstado']); });
 
 Route::middleware(['role:Coordinador'])->group(function(){
 

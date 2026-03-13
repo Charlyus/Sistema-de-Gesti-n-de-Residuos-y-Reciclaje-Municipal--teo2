@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 
 class DenunciaController extends Controller
 {
+    
 
 public function create()
 {

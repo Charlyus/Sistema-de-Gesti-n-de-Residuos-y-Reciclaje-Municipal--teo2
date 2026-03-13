@@ -23,4 +23,9 @@ protected $fillable = [
 'id_estado'
 ];
 
+public function denuncias()
+{
+return $this->hasMany(Denuncia::class,'id_estado');
+}
+
 }
