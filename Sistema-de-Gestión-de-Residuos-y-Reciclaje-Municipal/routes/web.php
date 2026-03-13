@@ -60,26 +60,24 @@ Route::post('/zona/store', [ZonaController::class,'store']);
 
 });
 
-Route::middleware(['role:Operador'])->group(function(){
+    Route::middleware(['role:Operador'])->group(function(){
 
-    Route::get('/punto-verde/dashboard', function(){
-        return view('punto_verde.dashboard');
-        });
-        
-        Route::get('/punto-verde/create',[PuntoVerdeController::class,'create']);
-        
-        Route::post('/punto-verde/store',[PuntoVerdeController::class,'store']);
-        Route::get('/punto-verde/list',[PuntoVerdeController::class,'list']);
+        Route::get('/punto-verde/dashboard',[PuntoVerdeController::class,'dashboard']);
+            
+            Route::get('/punto-verde/create',[PuntoVerdeController::class,'create']);
+            
+            Route::post('/punto-verde/store',[PuntoVerdeController::class,'store']);
+            Route::get('/punto-verde/list',[PuntoVerdeController::class,'list']);
 
-Route::get('/material/create',[MaterialController::class,'create']);
-Route::post('/material/store',[MaterialController::class,'store']);
-Route::get('/material/list',[MaterialController::class,'list']);
-Route::get('/contenedor/create',[ContenedorController::class,'create']);
-Route::post('/contenedor/store',[ContenedorController::class,'store']);
-Route::get('/contenedor/list',[ContenedorController::class,'list']);
-Route::get('/entrega/create',[EntregaController::class,'create']);
-Route::post('/entrega/store',[EntregaController::class,'store']);
-Route::get('/entrega/list',[EntregaController::class,'list']);
-Route::get('/contenedores-disponibles',[EntregaController::class,'contenedoresDisponibles']);
+    Route::get('/material/create',[MaterialController::class,'create']);
+    Route::post('/material/store',[MaterialController::class,'store']);
+    Route::get('/material/list',[MaterialController::class,'list']);
+    Route::get('/contenedor/create',[ContenedorController::class,'create']);
+    Route::post('/contenedor/store',[ContenedorController::class,'store']);
+    Route::get('/contenedor/list',[ContenedorController::class,'list']);
+    Route::get('/entrega/create',[EntregaController::class,'create']);
+    Route::post('/entrega/store',[EntregaController::class,'store']);
+    Route::get('/entrega/list',[EntregaController::class,'list']);
+    Route::get('/contenedores-disponibles',[EntregaController::class,'contenedoresDisponibles']);
 
-});
+    });

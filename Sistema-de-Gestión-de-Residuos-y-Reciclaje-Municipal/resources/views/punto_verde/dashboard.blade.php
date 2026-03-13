@@ -16,7 +16,9 @@
 <div class="container mt-4">
 
 <h2 class="mb-4">Panel Operador Punto Verde</h2>
-
+<div class="d-flex justify-content-end">
+    <a href="/logout" class="btn btn-success">cerrar sesion</a>
+</div>
 <div class="row g-3">
 
 <div class="col-md-4">
@@ -70,6 +72,21 @@ Solicitar Vaciado
 </div>
 
 </div>
+@if($notificaciones->count() > 0)
 
+<div class="alert alert-warning">
+
+@foreach($notificaciones as $n)
+
+<p>
+Contenedor {{$n->id_contenedor}}:
+{{$n->mensaje}}
+</p>
+
+@endforeach
+
+</div>
+
+@endif
 </body>
 </html>

@@ -8,6 +8,7 @@ use App\Models\PuntoVerde;
 use App\Models\TipoMaterial;
 use App\Models\Usuario;
 use App\Models\Contenedor;
+use App\Models\NotificacionContenedor;
 
 class EntregaController extends Controller
 {
@@ -52,6 +53,36 @@ EntregaReciclaje::create([
 $contenedor->cantidad_actual_kg = $nuevo_total;
 
 $contenedor->save();
+$porcentaje = ($contenedor->cantidad_actual_kg / $contenedor->capacidad_kg) * 100;
+if($porcentaje >= 100){
+
+    NotificacionContenedor::create([
+    'id_contenedor'=>$contenedor->id_contenedor,
+    'nivel'=>'lleno',
+    'mensaje'=>'Contenedor lleno, requiere atención inmediata'
+    ]);
+    
+    }
+    
+    elseif($porcentaje >= 90){
+    
+    NotificacionContenedor::create([
+    'id_contenedor'=>$contenedor->id_contenedor,
+    'nivel'=>'urgente',
+    'mensaje'=>'Contenedor al 90%, programar vaciado urgente'
+    ]);
+    
+    }
+    
+    elseif($porcentaje >= 75){
+    
+    NotificacionContenedor::create([
+    'id_contenedor'=>$contenedor->id_contenedor,
+    'nivel'=>'temprana',
+    'mensaje'=>'Contenedor al 75%, alerta temprana'
+    ]);
+    
+    }
 
 return redirect('/entrega/list')->with('success','Entrega registrada');
 
