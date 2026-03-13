@@ -29,8 +29,7 @@ Contenedor::create([
 
 'id_punto_verde'=>$request->id_punto_verde,
 'id_tipo_material'=>$request->id_tipo_material,
-'porcentaje_llenado'=>$request->porcentaje_llenado,
-'ultima_limpieza'=>$request->ultima_limpieza
+'capacidad_kg'=>$request->porcentaje_llenado
 
 ]);
 

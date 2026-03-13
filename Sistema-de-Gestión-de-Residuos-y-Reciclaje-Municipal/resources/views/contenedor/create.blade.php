@@ -64,19 +64,13 @@
 
 <div class="mb-3">
 
-<label>Porcentaje de llenado</label>
+<label>Capacidad en kg</label>
 
-<input type="number" name="porcentaje_llenado" class="form-control" min="0" max="100" value="0">
-
-</div>
-
-<div class="mb-3">
-
-<label>Última limpieza</label>
-
-<input type="datetime-local" name="ultima_limpieza" class="form-control">
+<input type="number" name="porcentaje_llenado" class="form-control" required>
 
 </div>
+
+
 
 <button class="btn btn-success">
 Guardar

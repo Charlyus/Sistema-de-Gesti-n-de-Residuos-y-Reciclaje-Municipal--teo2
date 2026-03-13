@@ -30,8 +30,7 @@ Nuevo contenedor
 <th>ID</th>
 <th>Punto Verde</th>
 <th>Material</th>
-<th>Llenado</th>
-<th>Última limpieza</th>
+<th>capacidad KG</th>
 
 </tr>
 
@@ -46,8 +45,7 @@ Nuevo contenedor
 <td>{{$c->id_contenedor}}</td>
 <td>{{$c->puntoVerde->nombre}}</td>
 <td>{{$c->material->nombre}}</td>
-<td>{{$c->porcentaje_llenado}} %</td>
-<td>{{$c->ultima_limpieza}}</td>
+<td>{{$c->capacidad_kg}} </td>
 
 </tr>
 

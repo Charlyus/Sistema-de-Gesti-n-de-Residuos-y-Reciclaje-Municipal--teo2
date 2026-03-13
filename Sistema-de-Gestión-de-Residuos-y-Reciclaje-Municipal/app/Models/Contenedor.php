@@ -16,7 +16,7 @@ public $timestamps = false;
 protected $fillable = [
 'id_punto_verde',
 'id_tipo_material',
-'porcentaje_llenado',
+'capacidad_kg',
 'ultima_limpieza'
 ];
 
