@@ -36,8 +36,11 @@ Route::get('/dashboard', function(){
 Route::middleware(['role:Administrador'])->group(function(){ 
     Route::get('/admin/dashboard',[AdminDenunciaController::class,'dashboard']); 
     Route::get('/admin/denuncias',[AdminDenunciaController::class,'index']); 
-    Route::post('/admin/denuncia/cambiar-estado',[AdminDenunciaController::class,'cambiarEstado']); });
-
+    Route::post('/admin/denuncia/cambiar-estado',[AdminDenunciaController::class,'cambiarEstado']); 
+    Route::post('/admin/denuncia/asignar-cuadrilla',[AdminDenunciaController::class,'asignarCuadrilla']);
+    Route::post('/admin/denuncia/foto-despues',[AdminDenunciaController::class,'subirFotoDespues']);
+});
+    
 Route::middleware(['role:Coordinador'])->group(function(){
 
     Route::get('/coordinador/dashboard',[CoordinadorController::class,'dashboard']);

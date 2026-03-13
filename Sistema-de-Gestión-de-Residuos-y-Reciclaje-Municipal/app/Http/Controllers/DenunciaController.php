@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Denuncia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Models\AsignacionDenuncia;
 
 class DenunciaController extends Controller
 {
@@ -57,4 +58,5 @@ $denuncias = Denuncia::where('id_usuario',Session::get('usuario')->id_usuario)
 return view('denuncia.mis_denuncias',compact('denuncias'));
 
 }
+
 }

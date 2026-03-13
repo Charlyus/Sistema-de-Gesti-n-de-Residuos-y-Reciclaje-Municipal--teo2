@@ -29,6 +29,8 @@
 <th>Estado</th>
 <th>Foto</th>
 <th>Cambiar Estado</th>
+<th>Asignar cuadrilla</th>
+<th>Foto después</th>
 </tr>
 </thead>
 
@@ -89,7 +91,75 @@ Actualizar
 </form>
 
 </td>
+<td>
+@if($d->estado != 'Asignada' && $d->estado != 'Atendida' && $d->estado != 'Cerrada')
+<form method="POST" action="/admin/denuncia/asignar-cuadrilla">
 
+@csrf
+
+<input type="hidden" name="id_denuncia" value="{{$d->id_denuncia}}">
+
+<select name="id_cuadrilla" class="form-control mb-2">
+
+@foreach($cuadrillas as $c)
+
+<option value="{{$c->id_cuadrilla}}">
+{{$c->nombre_equipo}}
+</option>
+
+@endforeach
+
+</select>
+
+<input type="date" name="fecha_intervencion" class="form-control mb-2">
+
+<input type="text" name="recursos" class="form-control mb-2" placeholder="Recursos estimados">
+
+<button class="btn btn-success btn-sm">
+Asignar
+</button>
+
+</form>
+@else
+
+<span class="badge bg-success">
+Cuadrilla asignada
+</span>
+
+@endif
+</td>
+<td>
+
+@if($d->estado == 'Asignada' || $d->estado == 'En atención')
+
+<form method="POST" action="/admin/denuncia/foto-despues" enctype="multipart/form-data">
+
+@csrf
+
+<input type="hidden" name="id_denuncia" value="{{$d->id_denuncia}}">
+
+<input type="file" name="foto_despues" class="form-control mb-2" required>
+
+<button class="btn btn-primary btn-sm">
+Subir foto
+</button>
+
+</form>
+
+@endif
+
+
+@if($d->foto_despues_url)
+
+<a href="{{asset('storage/'.$d->foto_despues_url)}}" target="_blank">
+
+<img src="{{asset('storage/'.$d->foto_despues_url)}}" width="70">
+
+</a>
+
+@endif
+
+</td>
 </tr>
 
 @endforeach
