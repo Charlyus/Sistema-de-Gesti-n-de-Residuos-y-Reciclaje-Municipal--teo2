@@ -50,6 +50,9 @@ class AuthController extends Controller
                 
             case 'Ciudadano':
                 return redirect('/ciudadano/dashboard');
+                
+            case 'Auditor':
+                return redirect('/auditor/dashboard');
 
             default:
                 return redirect('/');

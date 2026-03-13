@@ -16,6 +16,7 @@ use App\Http\Controllers\EntregaController;
 use App\Http\Controllers\CiudadanoController;
 use App\Http\Controllers\DenunciaController;
 use App\Http\Controllers\AdminDenunciaController;
+use App\Http\Controllers\AuditorController;
 
 
 
@@ -98,3 +99,9 @@ Route::post('/contenedor/programar-vaciado',[ContenedorController::class,'progra
         Route::get('/denuncia/mis-denuncias',[DenunciaController::class,'misDenuncias']);
         
         });
+
+        Route::middleware(['role:Auditor'])->group(function(){
+
+            Route::get('/auditor/dashboard',[AuditorController::class,'dashboard']);
+            
+            });
