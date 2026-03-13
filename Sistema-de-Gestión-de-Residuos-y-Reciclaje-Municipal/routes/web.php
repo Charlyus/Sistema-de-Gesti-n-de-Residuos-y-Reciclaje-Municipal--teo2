@@ -79,5 +79,7 @@ Route::post('/zona/store', [ZonaController::class,'store']);
     Route::post('/entrega/store',[EntregaController::class,'store']);
     Route::get('/entrega/list',[EntregaController::class,'list']);
     Route::get('/contenedores-disponibles',[EntregaController::class,'contenedoresDisponibles']);
+    Route::get('/contenedor/solicitar-vaciado',[ContenedorController::class,'solicitarVaciado']);
+Route::post('/contenedor/programar-vaciado',[ContenedorController::class,'programarVaciado']);
 
     });
