@@ -13,6 +13,8 @@ use App\Http\Controllers\PuntoVerdeController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\ContenedorController;
 use App\Http\Controllers\EntregaController;
+use App\Http\Controllers\CiudadanoController;
+use App\Http\Controllers\DenunciaController;
 
 
 
@@ -83,3 +85,13 @@ Route::post('/zona/store', [ZonaController::class,'store']);
 Route::post('/contenedor/programar-vaciado',[ContenedorController::class,'programarVaciado']);
 
     });
+    Route::middleware(['role:Ciudadano'])->group(function(){
+
+        Route::get('/ciudadano/dashboard',[CiudadanoController::class,'dashboard']);
+        
+        Route::get('/denuncia/create',[DenunciaController::class,'create']);
+        Route::post('/denuncia/store',[DenunciaController::class,'store']);
+        
+        Route::get('/denuncia/mis-denuncias',[DenunciaController::class,'misDenuncias']);
+        
+        });
